@@ -1,7 +1,6 @@
-#coding:UTF-8
 import requests as rs
 import re
-import json
+from bs4 import BeautifulSoup
 
 searchApi = 'https://movie.douban.com/subject_search'
 s = rs.Session()
@@ -10,7 +9,7 @@ headers = {
 }
 
 def getId(str):
-    print str
+    # print(str)
     regForId = '\d+'
     result = re.findall(regForId, str)
     # print result
@@ -21,9 +20,21 @@ def getFilmId(query):
     getFilmInfo = searchApi
     q = s.get(getFilmInfo,params=payloads,headers=headers)
     str = q.text
+    soup = BeautifulSoup(str, 'lxml')
+    soup.prettify()
+    btlinks = soup.find_all('tr', 'item')
+    target = None
+    for index in btlinks:
+        title = index.find_all('img')[0].attrs['alt']
+        print(title)
+        if title.find(query)>-1:
+            target = index
+            break
+    href = target.find('a').get('href')
     regExp = r'https://movie.douban.com/subject/\d*/'
-    re3 = re.findall(regExp,str)
-    print re3[0]
+    re3 = re.findall(regExp,href)
+    print(re3[0])
     searchFilmId = getId(re3[0])
     # print searchFilmId
     return searchFilmId
+getFilmId('速度与激情4')

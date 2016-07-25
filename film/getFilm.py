@@ -135,7 +135,7 @@ for i in range(len(nameList)):
         dict[nameList[i]]={'url':urlList[i],'num':NumList[i],'vote':checkVoteNum(i)}
     else:
         pass
-print dict
+print(dict)
 # print json.dumps(dict)
 # print dict
 # print len(json.dumps(dict))

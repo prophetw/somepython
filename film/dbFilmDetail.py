@@ -3,7 +3,6 @@ import getDBfilmId
 import requests as rs
 import re
 import os
-import commands
 import json
 
 #   get film  douban  id
@@ -28,9 +27,9 @@ def getFilmData(filmId):
     return filmData
 
 
-
+filmData = getFilmData(str(25662329))
 # print type (filmData)
-# print filmData
+print(filmData)
 # print filmData['rating']['average']
 # print filmData['images']['small']
 # print filmData['title']
