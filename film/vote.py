@@ -1,5 +1,9 @@
 import requests
 import hashlib
+
+# http://www.10brandchina.com/vote/startin.php?id=40374  投票地址
+
+
 md5 = hashlib.md5()
 # md5.update('what you want to md5 code')
 # md5.hexdigest()   这个是结果
@@ -14,6 +18,7 @@ authType = 1
 # get VPath + "api/captchar.vote.png.php?authType=" + authType + "&rnd=" + rndNum+ "&id=" + brand_id
 # rndNum 计算
 # rndNum=""+catId + brand_id+Math.round(Math.random()*100000)
+
 '''
 ajaxData('vote',signUrl("itemid="+brand_id+"&catid="+catId+"&captcha="+captchaVal+"&auth="+authType+"&rnd="+rndNum));
 
@@ -27,6 +32,7 @@ for (i=0;i<strs.length;i++) 	{ 
 	} 
 	return queryString+'&sign='+hex_md5(vals+timestamp); }
 '''
+
 captchaValue = 'pwyz'
 rnd='403745205696139'
 
