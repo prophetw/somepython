@@ -7,10 +7,17 @@ import time
 
 md5 = hashlib.md5()
 
+# ccc
+# VPath = "http://v4.10brandchina.com/"
+# itemid = '52056'
+# brand_id = '52056'
+# catId = '40374'
+# authType = '1'
+
 VPath = "http://v4.10brandchina.com/"
-itemid = '52056'
-brand_id = '52056'
-catId = '40374'
+itemid = '26205'
+brand_id = '26205'
+catId = '39971'
 authType = '1'
 
 '''
@@ -43,10 +50,10 @@ def downloadCapchaImg():
         for chunk in img.iter_content(10):
             fd.write(chunk)
         fd.close()
-# downloadCapchaImg()
+downloadCapchaImg()
 
 # capchaValue 是需要自己 去 检查输入的
-captchaValue = 'pwyz'
+captchaValue = 'bm8s'
 
 
 timeSecond = str(int(time.time()))
@@ -80,7 +87,8 @@ voteRequestsParams = {
     'sign':sign
 }
 val = 'itemid=52056&catid=40374&captcha=pwyz&auth=1&rnd=403745205696139&sign=e6f346b166128cc13fa1743833480397'
-
+voteResponse = requests.get(voteUrl, params=voteRequestsParams)
+print(voteResponse.text)
 
 
 
