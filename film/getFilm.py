@@ -7,8 +7,8 @@ query = '/s.php'
 
 # print(url+query)
 filmListHtml = url+query
-year = 2016  #这个地方填入 年份 比如 2015
-pgNum = 4    #这个地方改变数字 可以改变页数
+year = 2015  #这个地方填入 年份 比如 2015
+pgNum = 8   #这个地方改变数字 可以改变页数
 payload = {'q':year,'PageNo':pgNum}
 
 #print(payload)
