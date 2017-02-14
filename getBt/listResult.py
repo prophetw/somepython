@@ -17,7 +17,7 @@ else:
     keyword = ''
 if keyword=='':
     print('you need to pass params')
-    keyword = 'SMD-116'
+    keyword = 'SKY-329'
     # sys.exit(0)
 
 # 网站有反爬虫 所以需要带上header
@@ -56,57 +56,58 @@ for content in action:
         if link!= '':
             hashArr.append(link)
 
-# print(hashArr)
+print(hashArr)
 
-baseUrl = 'http://www.torrent.org.cn'
-getResultByHashUrl = baseUrl+'/home/convert/magnet2torrent.html?hash='
-def getDownloadUrl(strHash):
-    result = rs.get(getResultByHashUrl+strHash,headers=headers)
-    if result.status_code!=200:
-        print('connect not success')
-        sys.exit(0)
-    htmlElem = BeautifulSoup(result.text,'lxml')
-    print(result.url)
-    result = htmlElem.find('a',id="download")
-    if result != None:
-        downloadLink = result.find_next_sibling('a')
-        print(downloadLink.get('href'))
-        return downloadLink.get('href')
-    else:
-        return ''
-
-
-    # print(type(result))
-    # print(result)
-
-
-headers2 = {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Encoding": "gzip, deflate, sdch",
-    "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6",
-    "Connection": "keep-alive",
-    "Cookie": "PHPSESSID=lqp9n6mfcbuagombquue06qrp0; CNZZDATA5848809=cnzz_eid%3D521029807-1486790302-http%253A%252F%252Fwww.torrent.org.cn%252F%26ntime%3D1486819316; Hm_lvt_8d49907796aa9ef8039994cef084cfc0=1486791912,1486817556; Hm_lpvt_8d49907796aa9ef8039994cef084cfc0=1486824435",
-    "Host": "www.torrent.org.cn",
-    "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
-}
-def startDownload(link):
-    # print('downloadlink',link)
-    theLink = link.replace('Torrent','torrent')
-    print('downloadlink', theLink)
-    # result = rs.get(theLink,headers=headers2)
-    # print(result.url)
-
-for hash in hashArr:
-    downloadLink = getDownloadUrl(hash)
-    if downloadLink!='':
-        downloadLink = baseUrl+downloadLink
-        startDownload(downloadLink)
-        print('find bt the end!')
-        break
-    else:
-        continue
-    print('not find bt!')
+# baseUrl = 'http://www.torrent.org.cn'
+# getResultByHashUrl = baseUrl+'/home/convert/magnet2torrent.html?hash='
+# def getDownloadUrl(strHash):
+#     result = rs.get(getResultByHashUrl+strHash,headers=headers)
+#     if result.status_code!=200:
+#         print('connect not success')
+#         sys.exit(0)
+#     htmlElem = BeautifulSoup(result.text,'lxml')
+#     print(result.url)
+#     result = htmlElem.find('a',id="download")
+#     if result != None:
+#         downloadLink = result.find_next_sibling('a')
+#         print(downloadLink.get('href'))
+#         return downloadLink.get('href')
+#     else:
+#         return ''
+#
+#
+#     # print(type(result))
+#     # print(result)
+#
+#
+# headers2 = {
+#     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+#     "Accept-Encoding": "gzip, deflate, sdch",
+#     "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6",
+#     "Connection": "keep-alive",
+#     "Cookie": "PHPSESSID=lqp9n6mfcbuagombquue06qrp0; CNZZDATA5848809=cnzz_eid%3D521029807-1486790302-http%253A%252F%252Fwww.torrent.org.cn%252F%26ntime%3D1486819316; Hm_lvt_8d49907796aa9ef8039994cef084cfc0=1486791912,1486817556; Hm_lpvt_8d49907796aa9ef8039994cef084cfc0=1486824435",
+#     "Host": "www.torrent.org.cn",
+#     "Upgrade-Insecure-Requests": "1",
+#     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+# }
+# def startDownload(link):
+#     # print('downloadlink',link)
+#     theLink = link.replace('Torrent','torrent')
+#     print('download link below:')
+#     print(theLink)
+#     # result = rs.get(theLink,headers=headers2)
+#     # print(result.url)
+#
+# for hash in hashArr:
+#     downloadLink = getDownloadUrl(hash)
+#     if downloadLink!='':
+#         downloadLink = baseUrl+downloadLink
+#         startDownload(downloadLink)
+#         print('Bingo!')
+#         break
+#     else:
+#         continue
+#     print('not found!')
 
 
 
