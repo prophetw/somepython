@@ -17,7 +17,7 @@ else:
     keyword = ''
 if keyword=='':
     print('you need to pass params')
-    keyword = 'SKY-329'
+    keyword = '最帅的男人'
     # sys.exit(0)
 
 # 网站有反爬虫 所以需要带上header

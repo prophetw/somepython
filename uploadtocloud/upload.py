@@ -68,11 +68,12 @@ uploadposturl = 'http://upload.115.com/upload?debugs=1&userid=85475634&ets=14702
 payload={
     'name':'【BT天堂】【BTtiantang.com】[720p]有希望的男人.1.27GB.torrent',
 }
-# files = {'file': ('1.torrent', open('1.torrent', 'rb'), 'application/octet-stream')}
-files={'name': (None, '1.torrent'), 'target': (None, 'U_1_0'),'Filedata': ('1.torrent', 'Content-Type: application/octet-stream')}
+files = {'file': ('1.torrent', open('1.torrent', 'rb'), 'application/octet-stream')}
+# files={'name': (None, '1.torrent'), 'target': (None, 'U_1_0'),'Filedata': ('1.torrent', 'Content-Type: application/octet-stream')}
 # print(files)
 result = s.post(uploadposturl,headers=headers,files=files)
 print(result.request.headers)
 print(result.request.body)
+print(result.text)
 
 

@@ -1,9 +1,9 @@
 #coding:utf-8
 
 
-import requests as rs
+import requests
 
-s=rs.Session()
+s=requests.Session()
 
 
 
@@ -24,7 +24,7 @@ headers = {
 }
 
 s = requests.post(postUrl,postData,headers)
-print s.text
+print (s.text)
 
 
 

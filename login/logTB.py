@@ -18,8 +18,8 @@ urllib2.install_opener(opener)
 #打开登陆页面
 taobao = urllib2.urlopen(tbLoginUrl)
 curl = taobao.geturl()
-print curl
- 
+print (curl)
+
 headers = {
     'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:41.0) Gecko/20100101 Firefox/41.0',  
     'Referer' : '******'
@@ -66,7 +66,7 @@ postData = urllib.urlencode(postData)
  
 #发送请求
 request = urllib2.Request(tbLoginUrl, postData, headers)
-print type(request)
+print (type(request))
  
 response = urllib2.urlopen(request)
 #查看响应结果
@@ -75,6 +75,6 @@ text = response.read()#为str类型，但是尝试使用 gbk , ascii解码都不
 #原来是编辑器的原因，改用eclipse或者python IDE运行，结果如下
 info = response.info()
 status = response.getcode()
-print status,url,info
-print text
+print (status,url,info)
+print (text)
 
