@@ -11,6 +11,10 @@ import json
 class GoogleClient(object):
 
     '''
+        ======
+        值得注意的是
+            如果是 vpn 登陆的话  因为不常见的ip 很有可能遇到 安全验证电话验证 这个暂时没办法
+        ======
         python 登陆 google
         2017 02 18 home
         usage:
@@ -43,20 +47,27 @@ class GoogleClient(object):
         self.__session=rs.session()
         self.__session.headers = self.headers
         self.__cookie = self.__loadCookie()
+    def getLoginInfo(self):
+        '''
+
+        :return:
+        '''
         if self.__cookie:
-            print('监测到 cookie 直接用 cookie 登陆')
+            print('has cookie local use cookie to login in')
             self.__session.cookies.update(self.__cookie)
             result = self.__session.get("https://www.google.com/")
             soup = BeautifulSoup(result.text, "lxml")
             soup.prettify()
             # print(soup)
-            username = soup.find("div", class_="gb_xb").getText()
-            # username is type unicode need encode
-            # username.encode('utf8')
+            usernameEle = soup.find("div", class_="gb_xb")
+            if usernameEle==None:
+                print('Login failed retry in the browser!')
+            else:
+                username = usernameEle.getText()
+                # username is type unicode need encode
+                # username.encode('utf8')
+                print("已登陆账号: " + str(username))
 
-
-            print(type(str(username)))
-            print("已登陆账号: "+str(username))
         else:
             print("没有找到cookie文件，请调用login方法登录一次！")
 
@@ -68,8 +79,12 @@ class GoogleClient(object):
         :return:
         '''
         if self.__cookie and reLogin==False:
-            print('存在cookie 需要重新登陆调用login(username=your_account,password=your_psw,reLogin=true)')
+            print('cookie is exist use cookie want re-login execute login(username=your_account,password=your_psw,reLogin=True)')
+            self.getLoginInfo()
             return
+        print('*' * 20)
+        print('Login----')
+        print('*' * 20)
 
 
         if username==None:
@@ -77,11 +92,11 @@ class GoogleClient(object):
         if password==None:
             password='wangwei123/'
         self.stepFirstShakeHand()
+        print('login username: '+username)
         self.stepInputAccount(username)
         self.stepInputPassword(username,password)
+        self.getLoginInfo()
 
-
-        print(self)
     def stepFirstShakeHand(self):
         '''
         get cookies
@@ -179,6 +194,7 @@ class GoogleClient(object):
 
 if __name__ == '__main__':
     clinet = GoogleClient()
+    # clinet.login('wei_wang@foxitsoftware.com','P@ssabc123',reLogin=True)
     clinet.login()
 
 

@@ -5,6 +5,14 @@ from bs4 import BeautifulSoup
 import re
 import os
 import datetime
+import sys
+
+# test cookie
+
+
+
+
+sys.exit()
 
 loginUrl = 'https://accounts.google.com'
 googleManageUrl = 'https://accounts.google.com/ManageAccount'
