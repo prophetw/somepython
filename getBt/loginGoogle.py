@@ -88,9 +88,12 @@ class GoogleClient(object):
 
 
         if username==None:
-            username='wangjiawei1312@gmail.com'
+            # username='wangjiawei1312@gmail.com'
+            username='wei_wang@foxitsoftware.com'
         if password==None:
-            password='wangwei123/'
+            # password='wangwei123/'
+            password='P@ssabc123'
+
         self.stepFirstShakeHand()
         print('login username: '+username)
         self.stepInputAccount(username)
@@ -196,5 +199,9 @@ if __name__ == '__main__':
     clinet = GoogleClient()
     # clinet.login('wei_wang@foxitsoftware.com','P@ssabc123',reLogin=True)
     clinet.login()
+    session = clinet.getSession()
+    result = session.get('https://analytics.google.com/analytics/web/?hl=zh-CN#report/conversions-goals-overview/a1680467w127442912p131122512/%3F_u.date00%3D20170205%26_u.date01%3D20170211%26overview_goaloption_ALL-graphOptions.compareConcept%3Danalytics.goal1Completions/')
+    # https: // analytics.google.com / analytics / web /?hl = zh - CN  # report/conversions-goals-overview/a1680467w127442912p131122512/%3F_u.date00%3D20170201%26_u.date01%3D20170220%26overview_goaloption_ALL-graphOptions.compareConcept%3Danalytics.goal1Completions/
+    # https: // analytics.google.com / analytics / web /?hl = zh - CN  # report/conversions-goals-overview/a1680467w127442912p131122512/%3F_u.date00%3D20170205%26_u.date01%3D20170211%26overview_goaloption_ALL-graphOptions.compareConcept%3Danalytics.goal1Completions/
 
 

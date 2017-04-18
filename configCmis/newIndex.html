@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Cmis File Picker</title>
+<meta content="" name="description"/>
+<meta content="width=device-width" name="viewport"/>
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="bower_components/angular-toastr/dist/angular-toastr.css" rel="stylesheet" type="text/css"/>
+<link href="bower_components/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>
+<link href="src/style/common.css" rel="stylesheet" type="text/css"/>
+<link href="src/style/tree-style.css" rel="stylesheet" type="text/css"/>
+<link href="src/style/style.css" rel="stylesheet" type="text/css"/>
+<link href="src/theme/default.css" rel="stylesheet" type="text/css"/>
+<link href="src/theme/default.css" rel="stylesheet" type="text/css"/>
+<link href="src/theme/phantom.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+        html,body{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<cmis base-url="https://cloud-vagrant.connectedpdf.com/" cweb-tools-api="http://cwebtools-vagrant.connectedpdf.com/convert.jsp" device="phantom-online" file-picker-modal="" from-fill-and-sign="" is-drm-room="false" lang="US" membership-type="Owner" message-to-member="" path="/User_Homes/ww/ma/ww002@mailinator.com/Reading" repository="fxcld" room-link="" show-members="true" token="58f597670cf2bd9a806d50ba%2Cww002%40mailinator.com" url="https://cloud-vagrant.connectedpdf.com/cmis/browser">
+</cmis>
+<script src="src/language/da-DK.js" type="text/javascript"></script>
+<script src="src/language/de-DE.js" type="text/javascript"></script>
+<script src="src/language/en-US.js" type="text/javascript"></script>
+<script src="src/language/es-419.js" type="text/javascript"></script>
+<script src="src/language/fr-FR.js" type="text/javascript"></script>
+<script src="src/language/it-IT.js" type="text/javascript"></script>
+<script src="src/language/ja-JP.js" type="text/javascript"></script>
+<script src="src/language/ko-KR.js" type="text/javascript"></script>
+<script src="src/language/nl-NL.js" type="text/javascript"></script>
+<script src="src/language/pl-PL.js" type="text/javascript"></script>
+<script src="src/language/pt-PT.js" type="text/javascript"></script>
+<script src="src/language/pt-BR.js" type="text/javascript"></script>
+<script src="src/language/ru-RU.js" type="text/javascript"></script>
+<script src="src/language/fi-FI.js" type="text/javascript"></script>
+<script src="src/language/nb-NO.js" type="text/javascript"></script>
+<script src="src/language/sv-SE.js" type="text/javascript"></script>
+<script src="src/language/zh-CN.js" type="text/javascript"></script>
+<script src="src/language/zh-HK.js" type="text/javascript"></script>
+<script src="src/language/zh-TW.js" type="text/javascript"></script>
+<script src="bower_components/FileSaver/FileSaver.min.js" type="text/javascript"></script>
+<script src="bower_components/base64/base64.min.js" type="text/javascript"></script>
+<script src="bower_components/superagent/superagent.js" type="text/javascript"></script>
+<script src="bower_components/smx-cmis/lib/cmis.js" type="text/javascript"></script>
+<script src="bower_components/angular/angular.js" type="text/javascript"></script>
+<script src="bower_components/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js" type="text/javascript"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js" type="text/javascript"></script>
+<script src="bower_components/angular-translate/angular-translate.js" type="text/javascript"></script>
+<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js" type="text/javascript"></script>
+<script src="lib/ng-context-menu.js" type="text/javascript"></script>
+<script src="bower_components/angular-file-model/angular-file-model.js" type="text/javascript"></script>
+<script src="bower_components/clipboard/dist/clipboard.js" type="text/javascript"></script>
+<script src="bower_components/ngclipboard/dist/ngclipboard.js" type="text/javascript"></script>
+<script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js" type="text/javascript"></script>
+<script src="bower_components/angular-animate/angular-animate.js" type="text/javascript"></script>
+<script src="bower_components/jquery-qrcode/jquery.qrcode.min.js" type="text/javascript"></script>
+<script src="bower_components/clipboard/dist/clipboard.js" type="text/javascript"></script>
+<!-- develop -->
+<script src="src/cmis-directive.js" type="text/javascript"></script>
+<script src="src/service.js" type="text/javascript"></script>
+<script src="src/controllers.js" type="text/javascript"></script>
+<script src="src/models.js" type="text/javascript"></script>
+<script src="src/main-controller.js" type="text/javascript"></script>
+<script src="src/modal-controller.js" type="text/javascript"></script>
+<script src="src/filter.js" type="text/javascript"></script>
+<script src="src/directives/file-dropzone.js" type="text/javascript"></script>
+<script src="src/directives/drag-and-drop.js" type="text/javascript"></script>
+<script src="src/directives/selection-area.js" type="text/javascript"></script>
+<script src="src/directives/breadcrumb.js" type="text/javascript"></script>
+<script src="src/directives/common.js" type="text/javascript"></script>
+<script src="src/directives/cloud-reading-share.js" type="text/javascript"></script>
+<!--<script src="extend-for-java.js"></script>-->
+<!--<script src="dist/cmis-directive.min.js"></script>-->
+<script type="text/javascript">
+    //	function viewDocument(objectId, downloadUrl, indexUrl , fileName, fileSize, fileHash){
+    //		console.log (objectId, downloadUrl, indexUrl, fileName, fileSize, fileHash)
+    //	}
+    //    readerPluginVersion = '8.1.0.1.3';
+
+    angular.module('test', ['UCX.Cmis']);
+    angular.element(document).ready(function () { angular.bootstrap(document, ['test']); })
+//    window.viewDocument = function(objectId, downloadUrl, indexUrl, fileName, fileSize){
+//        console.log(objectId)
+//        console.log(downloadUrl)
+//        console.log(indexUrl)
+//        console.log(fileName)
+//        console.log(fileSize)
+//
+//    };
+</script>
+</body>
+</html>
