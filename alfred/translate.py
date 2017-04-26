@@ -1,5 +1,30 @@
 # -*- coding: utf-8 -*-
 
+import requests as rs
+import os
+import datetime
+import sys
+import json
+import alfred
+# Imports the Google Cloud client library
+
+
+# query = 'important'
+# results = []
+# translateUrl = 'https://translate.google.com/translate_a/t?client=t&sl=en&tl=zh-CN&hl=zh-TW&v=1.0&source=is&tk=101907.515401&q='+query
+# r = rs.get(translateUrl)
+# print(r)
+# print(r.text)
+# item = alfred.Item({'uid': 1, 'arg': translateUrl}, r.text, 'this is good story')
+# results.append(item)
+# xml = alfred.xml(results)
+#
+# print(xml)
+# alfred.write(xml)
+
+
+# -*- coding: utf-8 -*-
+
 import hashlib
 import random
 import urllib
@@ -7,8 +32,6 @@ import requests
 import json
 import re
 import sys
-
-
 
 __author__ = 'wang wei'
 print (sys.argv)
@@ -79,10 +102,17 @@ def translate(queryStrings,fromLang,toLang):
     totalUrl=requestUrl+arguments
     r = requests.get(totalUrl)
     return r
-r = translate('fuck','en','zh').text
-r = json.loads(r)
+r = translate('fuck','en','zh')
+rToDist = json.loads(r.text)
+results=[]
+item = alfred.Item({'uid': 1, 'arg': r.url}, rToDist['trans_result'][0]['dst'], rToDist['trans_result'][0]['src'])
+results.append(item)
+xml = alfred.xml(results)
+#
+
+# alfred.write(xml)
 print(r)
-print(r['trans_result'][0]['dst'])
+print(xml)
 # def handleTranslate(result,fileToWriteTo):
 #     result=json.loads(result)
 #     # print(result['trans_result'])
