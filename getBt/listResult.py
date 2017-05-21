@@ -43,6 +43,7 @@ table = htmlElem.find('table',id="archiveResult")
 action = table.find_all('td',class_="action")
 # print(action)
 hashArr = []
+titles = []
 
 def getHash(str):
     if len(str)>0:
@@ -53,10 +54,14 @@ def getHash(str):
 for content in action:
     if content.find('a',rel="information"):
         link = getHash(content.find('a').get('href'))
-        if link!= '':
+        title=''
+        title=content.find('a').get('title')
+        if link!= '' and title!='':
             hashArr.append(link)
+            titles.append(title)
 
 print(hashArr)
+print(titles)
 
 # baseUrl = 'http://www.torrent.org.cn'
 # getResultByHashUrl = baseUrl+'/home/convert/magnet2torrent.html?hash='
