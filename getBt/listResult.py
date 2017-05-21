@@ -61,7 +61,9 @@ for content in action:
             titles.append(title)
 
 print(hashArr)
-print(titles)
+# print ['你好']  会有乱码 所以暂时遍历  不知道顺序对不对
+for title in titles:
+    print title
 
 # baseUrl = 'http://www.torrent.org.cn'
 # getResultByHashUrl = baseUrl+'/home/convert/magnet2torrent.html?hash='
