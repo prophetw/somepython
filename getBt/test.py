@@ -16,8 +16,8 @@ print('save path',path)
 # time uid 81ba6630b9ff7ff1918281ffe5234b2fa0464681
 command="curl 'http://115.com/web/lixian/?ct=lixian&ac=add_task_bt' " \
         "-H 'Cookie: ssov_85475634=1_85475634_27969c53e3cb79dd3eae569aade3891b; tjj_u=1; tjj_id=148760361897543216273; " \
-        "UID=85475634_A1_1493042570; CID=9787854af2d4b8f785793153f0b72c7d; " \
-        "SEID=e94f7119a603f77abd203ef7039fe20ec3ab36240e0e894ea88fcfc5bd207cd3ec6d8f87570921cffcbb199b210dff3b0bd22c0b4fb4c03ab5c34004; " \
+        "UID=85475634_A1_1495355127; CID=ebff28caf899f7e7612fb46dcde7b90c; " \
+        "SEID=b0571ea61a3df24fc9881f9bbef2d824b56cf1f1534b55be420ab47638b8495e7742170e6e3fc92d0651f884879430a28b569e8b9f2eb4a365ed99d2; " \
         "OOFL=85475634; PHPSESSID=307mbfsavalp7pmn6m7af673p1; " \
         "tjj_repeat=7; 115_lang=zh' " \
         "-H 'Origin: http://115.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: zh-CN,zh;q=0.8' " \

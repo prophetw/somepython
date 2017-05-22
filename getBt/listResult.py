@@ -57,14 +57,29 @@ for content in action:
         title=''
         title=content.find('a').get('title')
         if link!= '' and title!='':
+            print(link)
+            print(type(title))
+            titleutf8=title.encode('utf8')
+            print('utf8',titleutf8)
+            print(str(titleutf8))
+            print(type(titleutf8))
+            titlegbk=title.encode('gbk','ignore')
+            print('gbk')
+            print(titlegbk)
+
+
             hashArr.append(link)
             titles.append(title)
-
-print(hashArr)
+print(titles)
+print(titles[0])
+titleutf8=[x.encode('UTF8') for x in titles]
+print(titleutf8)
+print(type(titleutf8[0]))
+#print(hashArr)
 # print ['你好']  会有乱码
 # 解决方案
 #     https://www.zhihu.com/question/20413029
-print(','.join(titles))
+#print(','.join(titles))
 
 # baseUrl = 'http://www.torrent.org.cn'
 # getResultByHashUrl = baseUrl+'/home/convert/magnet2torrent.html?hash='
