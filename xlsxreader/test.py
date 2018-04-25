@@ -3,29 +3,44 @@ from openpyxl import load_workbook
 from pprint import pprint
 import json
 
-# generate json from .xlsx
-# https://openpyxl.readthedocs.io/en/stable/tutorial.html#loading-from-a-file
-wb = load_workbook(filename='./1.xlsx')
+# 脚本从 .xlsx 生成类似 json
+# 脚本依赖 openpyxl  需要使用 pip install openpyxl 安装
+# openpyxl docs https://openpyxl.readthedocs.io/en/stable/tutorial.html#loading-from-a-file
+# 尽量 python3+ 版本
 
-# eg
-# B列 tools key  keyColumn='B'
-# D列 page title pageTitleColumn = 'D'
-# E列 meta description metaDescriptionColumn = "E"
-# pageTitle metaDescription metaTitle  seoPara
+#  需要设置4个参数 如下所示
+#       path 是xlsx的路径
+#       sheetName 表格的名字 注意: 这个sheetName请手动改成英文 (python3+可以不用考虑修改,python2+对中文支持不好会报错)
+#       keyColumn key列
+#       valueColumn 结果列
+#  另外 keyMap 对象需要手动维护 保持提供的xlsx里面的key和翻译文件的key一一对应
 
-#  注意这个 sheetName 不要用中文手动改成英文 python2. 版本在中文转译会报错 并且显示也是存在问题的
-#  请使用 python3+ 版本
+path = './1.xlsx'
 sheetName = str('Page title And Meta Description')
-hello={
-    "sss":str("你好")
-}
-print(hello)
-keyColumn = 'B'
-pageTitleColumn = 'D'
-metaDescriptionColumn = "E"
+keyColumn = 'B'   # xlsx B列
+valueColumn = 'E'  # xlsx D列
+
+# 实际效果如下图所示
+# input xlsx
+#  A         B列                C               D列                      E
+#  1         key                                page title              meta description
+#  2         PDF to Word                        hello title\n你好标题    hello meta description\n你好描述
+#
+#  当设置 keyColumn='B' valueColumn = 'D'
+#
+# output json
+# {
+#     "PDF2Word":"hello"
+# }
+# {
+#     "PDF2Word":"你好标题"
+# }
+
+
+wb = load_workbook(filename=path)
 ws = wb[sheetName]
 
-# 提供的key 和 翻译文件的key
+# 提供xlsx里面的key 和 翻译文件的key
 keyMap={
     "PDF to Word" : "PDF2Word",
     "PDF to Excel":"PDF2Excel",
@@ -58,24 +73,20 @@ keyMap={
 rowNumber = range(1, 30)
 
 # 输出对象
-pageTitleEn = {}
-pageTitleZh = {}
-metaDescriptionEn = {}
-metaDescriptionZh = {}
+outputEn = {}
+outputZh = {}
 
 for index in rowNumber:
     if ws[keyColumn+str(index)].value != None and keyMap.get(ws[keyColumn+str(index)].value) != None:
         key = keyMap[ws[keyColumn+str(index)].value]
-        pageTitleEn[key] = ws[pageTitleColumn + str(index)].value.split('\n')[0]
-        pageTitleZh[key] = ws[pageTitleColumn + str(index)].value.split('\n')[1]
-        metaDescriptionEn[key] = ws[metaDescriptionColumn + str(index)].value.split('\n')[0]
-        metaDescriptionZh[key] = ws[metaDescriptionColumn + str(index)].value.split('\n')[1]
+        outputEn[key] = ws[valueColumn + str(index)].value.split('\n')[0]
+        outputZh[key] = ws[valueColumn + str(index)].value.split('\n')[1]
 
 # python 3 如下
-pprint(pageTitleEn,width=999)
-pprint(metaDescriptionEn,width=999)
-pprint(pageTitleZh)
-pprint(metaDescriptionZh,width=999)
+pprint(outputEn,width=999)
+pprint(outputZh,width=999)
+print('输出格式不对的时候使用下面这个')
+pprint(outputZh)
 
-# python 2 版本中文字典打印出 unicode 的问题用下面的方案 
+# python 2 版本中文字典打印出 unicode 的问题用下面的方案
 # print(json.dumps(metaDescriptionZh, ensure_ascii=False, encoding='UTF-8'))
