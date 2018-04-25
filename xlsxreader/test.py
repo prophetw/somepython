@@ -1,6 +1,7 @@
 #coding:UTF-8
 from openpyxl import load_workbook
 from pprint import pprint
+import json
 
 # generate json from .xlsx
 # https://openpyxl.readthedocs.io/en/stable/tutorial.html#loading-from-a-file
@@ -12,7 +13,13 @@ wb = load_workbook(filename='./1.xlsx')
 # E列 meta description metaDescriptionColumn = "E"
 # pageTitle metaDescription metaTitle  seoPara
 
-sheetName = str(' Page title 和 Meta Description ')
+#  注意这个 sheetName 不要用中文手动改成英文 python2. 版本在中文转译会报错 并且显示也是存在问题的
+#  请使用 python3+ 版本
+sheetName = str('Page title And Meta Description')
+hello={
+    "sss":str("你好")
+}
+print(hello)
 keyColumn = 'B'
 pageTitleColumn = 'D'
 metaDescriptionColumn = "E"
@@ -63,9 +70,12 @@ for index in rowNumber:
         pageTitleZh[key] = ws[pageTitleColumn + str(index)].value.split('\n')[1]
         metaDescriptionEn[key] = ws[metaDescriptionColumn + str(index)].value.split('\n')[0]
         metaDescriptionZh[key] = ws[metaDescriptionColumn + str(index)].value.split('\n')[1]
+
+# python 3 如下
 pprint(pageTitleEn,width=999)
 pprint(metaDescriptionEn,width=999)
-
 pprint(pageTitleZh)
 pprint(metaDescriptionZh,width=999)
 
+# python 2 版本中文字典打印出 unicode 的问题用下面的方案 
+# print(json.dumps(metaDescriptionZh, ensure_ascii=False, encoding='UTF-8'))
