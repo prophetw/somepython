@@ -60,17 +60,18 @@ def getAccessToken(email, password, apiBaseUrl):
         'password':password
     }
     try:
-        result = rs.post(apiBaseUrl+'access_token', data=data)
-        print(result)
-        print(result.url)
-        print(result.text)
-        resultDict = json.loads(result.text)
-        if (resultDict['ret'] == 0):
-            accessToken = resultDict['data']['access_token']
-        else:
-            # print(resultDict)
-            print('====auto sign up====')
-            signUp(email, password, apiBaseUrl)
+        signUp(email, password, apiBaseUrl)
+        # result = rs.post(apiBaseUrl+'access_token', data=data)
+        # print(result)
+        # print(result.url)
+        # print(result.text)
+        # resultDict = json.loads(result.text)
+        # if (resultDict['ret'] == 0):
+        #     accessToken = resultDict['data']['access_token']
+        # else:
+        #     # print(resultDict)
+        #     print('====auto sign up====')
+        #     signUp(email, password, apiBaseUrl)
         return accessToken
     except:
         print('server error can not access to: '+apiBaseUrl)
@@ -111,7 +112,7 @@ def configCmisIndex(env):
             print(soup)
             outPutFile.write(str(soup))
             print(total)
-configCmisIndex('vagrant')
+configCmisIndex('docker')
 
 
 
