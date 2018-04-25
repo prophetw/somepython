@@ -3,6 +3,7 @@ from openpyxl import load_workbook
 from pprint import pprint
 import json
 
+
 # 脚本从 .xlsx 生成类似 json
 # 脚本依赖 openpyxl  需要使用 pip install openpyxl 安装
 # openpyxl docs https://openpyxl.readthedocs.io/en/stable/tutorial.html#loading-from-a-file
@@ -19,6 +20,13 @@ path = './1.xlsx'
 sheetName = str('Page title And Meta Description')
 keyColumn = 'B'   # xlsx B列
 valueColumn = 'E'  # xlsx D列
+print('xlsx path:',path)
+print('sheetName:',sheetName)
+print('keyColumn:',keyColumn)
+print('valueColumn',valueColumn)
+
+# 关于xlsx的格式
+# https://jira.foxitsoftware.cn/browse/PRO-5820 需要PM 严格按照里面的xlsx格式编写 英文和中文同一行
 
 # 实际效果如下图所示
 # input xlsx
